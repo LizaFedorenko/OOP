@@ -4,7 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Title</title>
-    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js"></script>
   </head>
 
   <body>
@@ -15,7 +16,7 @@
       <nav>
         <div class="menu-wrapper">
           <ul class="menu">
-            <li class="menu-item"><a href="#">Home</a></li>
+            <li class="menu-item"><a href="main-page.html">Home</a></li>
             <li class="menu-item"><a href="#">Folders</a></li>
             <li class="menu-item"><a href="#">Timetable</a></li>
           </ul>
@@ -25,17 +26,57 @@
     <div class="main-page-wrapper">
       <main class="main">
         <div class="tools">
-          <div class="tools-item">Create a task</div>
-          <div class="tools-item">Create a folder</div>
-          <div class="tools-item">Create a timetable</div>
+          <button class="tools-item" id="createTaskButton">Create a Task</button>
+          <button class="tools-item" id="createFolderButton" >Create a Folder</button>
+          <button class="tools-item" id= "createTimetableButton" onclick="createTimetable()">Create a Timetable</button>
         </div>
+        <!-- Container for tasks in the main content area -->
+        <div class="tasks-container" style="display: none;">
+          <h2>Your Tasks:</h2>
+          <ul id="taskList"></ul>
+        </div>
+        <div class="folders-container" style="display: none;">
+        </div>
+        <div class="timetables-button" style="display: none;">
+          <button onclick="showTimetables()" class="button inactive-button">Timetables</button>
+        </div>
+
       </main>
-      <sidebar class="sidebar"></sidebar>
+      <sidebar class="sidebar">
+        <div class="tasks-button" style="display: none;">
+          <button onclick="showTasks()" class="button inactive-button">Tasks</button>
+        </div>
+        <div class="folders-button" style="display: none;">
+          <button onclick="showFolders()" class="button inactive-button">Folders</button>
+          <div class="folders-container"></div>
+        </div>
+        <div class="timetable-button" style="display: none;">
+          <button onclick="showTimetables()" class="button inactive-button">Timetables</button>
+        </div>
+      </sidebar>
     </div>
     <div class="footer-wrapper">
       <footer>
         <p>©Copyright 2050 by nobody. All rights reversed.</p>
       </footer>
     </div>
+      <div id="createTaskModal" class="modal">
+        <div class="modal-content">
+          <span class="close" onclick="closeModal()">&times;</span>
+          <label for="taskInput">Enter Task:</label>
+          <input type="text" id="taskInput">
+          <button onclick="saveTask()">Save Task</button>
+        </div>
+      </div >
+      <div id="createFolderModal" class="modal">
+          <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <label for="fInput">Enter Folder Name:</label>
+            <input type="text" id="fInput">
+            <button onclick="createFolder()">Create Folder</button>
+
+          </div>
+      </div>
+
   </body>
 </html>
